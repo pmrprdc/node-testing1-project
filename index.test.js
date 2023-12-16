@@ -109,3 +109,13 @@ describe('[Exercise 6] Car', () => {
     expect(focus.fuel).toBeLessThan(20)
   })
 })
+
+describe('[Exercise 7] isEvenNumberAsync', () => {
+  test('[19] resolves true if passed an even number', async () => {
+    await expect(isEvenNumberAsync(4)).resolves.toBe(true);
+  });
+
+  test('[20] resolves false if passed an odd number', async () => {
+    await expect(isEvenNumberAsync(5)).resolves.toBe(false);
+  });
+});
