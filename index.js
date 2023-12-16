@@ -70,50 +70,39 @@ class Seasons {
 
 
 class Car {
-  /**
-   * [Exercise 6A] Car creates a car object
-   * @param {string} name - the name of the car
-   * @param {number} tankSize - capacity of the gas tank in gallons
-   * @param {number} mpg - miles the car can drive per gallon of gas
-   */
   constructor(name, tankSize, mpg) {
-    this.odometer = 0 // car initilizes with zero miles
-    this.tank = tankSize // car initiazes full of gas
-    // ✨ initialize whatever other properties are needed
+    this.name = name;
+    this.tankSize = tankSize; // Total capacity of the gas tank in gallons
+    this.mpg = mpg; // Miles per gallon
+    this.odometer = 0; // Total miles driven
+    this.tank = tankSize; // Current gas in the tank (gallons)
+  }
+  get fuel() {
+    return this.tank; // Returning the current fuel level from the tank property
   }
 
-  /**
-   * [Exercise 6B] Car.prototype.drive adds miles to the odometer and consumes fuel according to mpg
-   * @param {string} distance - the distance we want the car to drive
-   * @returns {number} - the updated odometer value
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(100) // returns 100
-   * focus.drive(100) // returns 200
-   * focus.drive(100) // returns 300
-   * focus.drive(200) // returns 500
-   * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
-   */
   drive(distance) {
-    // ✨ implement
+    const maxDistance = this.tank * this.mpg; // Maximum distance the car can go with the current gas
+    const actualDistance = Math.min(distance, maxDistance); // Actual distance driven
+
+    this.odometer += actualDistance; // Update the odometer
+    this.tank -= actualDistance / this.mpg; // Reduce the gas in the tank
+
+    return this.odometer; // Return the updated odometer
   }
 
-  /**
-   * [Exercise 6C] Adds gallons to the tank
-   * @param {number} gallons - the gallons of fuel we want to put in the tank
-   * @returns {number} - the miles that can be driven after refueling
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(600) // returns 600
-   * focus.drive(1) // returns 600 (no distance driven as tank is empty)
-   * focus.refuel(99) // returns 600 (tank only holds 20)
-   */
+
   refuel(gallons) {
-    // ✨ implement
+    const gasNeeded = this.tankSize - this.tank; // Gas needed to fill the tank
+    const gasToRefuel = Math.min(gallons, gasNeeded); // Actual gas to refuel
+
+    this.tank += gasToRefuel; // Refuel the tank
+
+    return this.tank * this.mpg; // Return the total miles that can be driven after refueling
   }
 }
+
+
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
