@@ -112,10 +112,10 @@ describe('[Exercise 6] Car', () => {
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
   test('[19] resolves true if passed an even number', async () => {
-    await expect(isEvenNumberAsync(4)).resolves.toBe(true);
+    await expect(utils.isEvenNumberAsync(4)).resolves.toBe(true);
   });
 
   test('[20] resolves false if passed an odd number', async () => {
-    await expect(isEvenNumberAsync(5)).resolves.toBe(false);
+    await expect(utils.isEvenNumberAsync(5)).resolves.toBe(false);
   });
 });
