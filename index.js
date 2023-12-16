@@ -7,8 +7,12 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  // ✨ implement
+  return Object.keys(obj).reduce((newObj, key) => {
+    newObj[key] = typeof obj[key] === 'string' ? obj[key].trim() : obj[key];
+    return newObj;
+  }, {});
 }
+
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object

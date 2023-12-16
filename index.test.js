@@ -108,4 +108,4 @@ describe('[Exercise 6] Car', () => {
     focus.drive(600)
     expect(focus.fuel).toBeLessThan(20)
   })
-  test('[17] refueling allows to keep driving', () => {
+})
